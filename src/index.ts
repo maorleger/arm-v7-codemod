@@ -1,5 +1,6 @@
 import { Project } from "ts-morph";
 import { LROTransform } from "./transforms/lro-transform";
+import { PropertyNestingTransform } from "./transforms/property-nesting-transform";
 import * as path from "path";
 
 // Parse command line arguments
@@ -13,6 +14,7 @@ const project = new Project({
 });
 
 const lroTransform = new LROTransform();
+const propertyNestingTransform = new PropertyNestingTransform();
 
 // Initialize the codemod process
 function runCodemod(pattern: string) {
@@ -32,9 +34,12 @@ function runCodemod(pattern: string) {
   sourceFiles.forEach((sourceFile) => {
     console.log(`Processing: ${sourceFile.getFilePath()}`);
 
-    // Apply LRO transformation
-    lroTransform.transform(sourceFile);
+    // Apply property nesting transformation first (modifies object structure)
+    propertyNestingTransform.transform(sourceFile);
+    console.log("  ✓ Property nesting transformation applied");
 
+    // Apply LRO transformation (modifies method calls)
+    lroTransform.transform(sourceFile);
     console.log("  ✓ LRO transformation applied");
   });
 
