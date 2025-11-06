@@ -40,6 +40,7 @@ Migration looks like this:
 const result = await beginStartAndWait();
 
 const poller = await beginStart();
+poller.onProgress((state) => console.log(`Progress: ${state.percentComplete}%`));
 const result2 = await poller.pollUntilDone();
 
 // After (TypeSpec-generated)
@@ -47,6 +48,7 @@ const result = await start();           // awaiting returns the final result
 
 const poller = start();                 // direct access to the poller
 await poller.submitted();               // optional: await initial submission
+poller.onProgress((state) => console.log(`Progress: ${state.percentComplete}%`));
 const result2 = await poller;           // or: await poller.pollUntilDone()
 ```
 

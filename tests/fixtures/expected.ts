@@ -31,6 +31,7 @@ async function testOperations() {
     PRIVATE_CLOUD_NAME,
     privateCloudParams
   );
+  await poller.submitted();
   let result = await poller.pollUntilDone();
   console.log(`Private Cloud created: ${result.name}`);
 
