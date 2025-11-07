@@ -18,6 +18,8 @@ import {
  *
  * Note: This is not hooked up to the main codemod. It's a proof of concept
  * demonstrating how type analysis could work.
+ *
+ * More details can be found in @/docs/PROPERTY_FLATTEN.md
  */
 
 interface NestingInfo {
