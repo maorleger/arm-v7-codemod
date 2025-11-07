@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes an advanced approach to transforming Azure SDK v6 object literals to v7 using TypeScript type analysis via ts-morph. This is an alternative to the heuristic-based approach currently implemented.
+This document describes an advanced approach to transforming Azure SDK v6 object literals to v7 using TypeScript type analysis via ts-morph. This is an alternative to the heuristic-based approach currently implemented and assumes we're unable to provide a metadata file that helps with identifying flattened properties.
 
 ## Problem Statement
 
