@@ -9,7 +9,6 @@ The `arm-v7-codemod` is an automated codemod tool for migrating Azure SDK for Ja
 - **LRO (Long-Running Operation) Migration**: Automatically transforms `begin*` methods to their v7 equivalents
 - **Property Nesting**: Restructures ARM resource objects to use the new nested `properties` structure
 - **Type-Safe**: Uses TypeScript AST manipulation for accurate transformations
-- **Dry-Run Mode**: Preview changes before applying them
 - **Glob Pattern Support**: Transform multiple files at once
 
 ## Project Structure
@@ -69,13 +68,6 @@ Use glob patterns to target specific files:
 npm run codemod -- "src/**/*.ts"
 npm run codemod -- "example/**/*.ts"
 npm run codemod -- "path/to/file.ts"
-```
-
-### Dry-Run Mode
-
-Preview changes without modifying files:
-```bash
-npm run codemod -- "src/**/*.ts" --dry-run
 ```
 
 ## Transformations

@@ -6,7 +6,6 @@ import * as path from "path";
 // Parse command line arguments
 const args = process.argv.slice(2);
 const filePattern = args[0] || "example/**/*.ts";
-const dryRun = args.includes("--dry-run");
 
 // Initialize project and transformations
 const project = new Project({
@@ -44,17 +43,8 @@ function runCodemod(pattern: string) {
   });
 
   // Save changes
-  if (dryRun) {
-    console.log("\n🔍 Dry run mode - no files were modified");
-    console.log("\nPreview of changes:\n");
-    sourceFiles.forEach((sourceFile) => {
-      console.log(`\n--- ${sourceFile.getFilePath()} ---`);
-      console.log(sourceFile.getText());
-    });
-  } else {
-    project.saveSync();
-    console.log(`\n✅ Successfully transformed ${sourceFiles.length} file(s)`);
-  }
+  project.saveSync();
+  console.log(`\n✅ Successfully transformed ${sourceFiles.length} file(s)`);
 }
 
 // Start the codemod process
